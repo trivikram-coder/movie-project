@@ -1,0 +1,13 @@
+body{
+    background-color: lightgray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.container-fluid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input{
+    width: 500px;
+    border: 1px solid black;
+}
