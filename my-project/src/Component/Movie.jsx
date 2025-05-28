@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useNavigate} from 'react-router-dom';
 
 const Movie = () => {
+  const navigation=useNavigate();
   const [details, setDetails] = useState([]);
   const[search,setSearch]=useState("")
   const [filter,setFilter]=useState([])
@@ -26,7 +28,9 @@ const searchMovie = (searchTerm) => {
   );
   setFilter(filteredData);
 };
-
+function page(item){
+navigation("/home",{state:{data:item}});
+}
 return (
     <>
     <header>
@@ -53,7 +57,7 @@ return (
       <div className="row">
         {filter.map(item => (
           <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={item.id}>
-            <div className="card h-100 w-120">
+            <div className="card h-100 w-120" onClick={()=>page(item)}>
               <img 
                 src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} 
                 className="card-img-top" 
