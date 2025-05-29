@@ -5,11 +5,14 @@ const Page1 = () => {
     const {data}=location.state||{};
   return (
     <div>
-      <h1>HELLO</h1>
+      
       <h1>
-        {data.overview}
+        {data.original_title}
       </h1>
-    </div>
+      <div className="img-container">
+      <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} alt="Poster" className='img-movie'/>
+      </div>
+ </div>   
   )
 }
 

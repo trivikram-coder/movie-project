@@ -8,11 +8,16 @@ const Movie = () => {
   const[search,setSearch]=useState("")
   const [filter,setFilter]=useState([])
   useEffect(() => {
-    fetch("https://api.themoviedb.org/3/movie/popular?api_key=0622da2897cdf0945e7b0d44ca79982c&page=1")
-      .then(res => res.json())
-      .then(data => {
-        setDetails(data.results);
-        setFilter(data.results); // Initialize filter with all movies
+    // Fetch both pages and merge results
+    Promise.all([
+      fetch("https://api.themoviedb.org/3/movie/popular?api_key=0622da2897cdf0945e7b0d44ca79982c&page=1").then(res => res.json()),
+      fetch("https://api.themoviedb.org/3/movie/popular?api_key=0622da2897cdf0945e7b0d44ca79982c&page=2").then(res => res.json()),
+      fetch("https://api.themoviedb.org/3/movie/popular?api_key=0622da2897cdf0945e7b0d44ca79982c&page=3").then(res => res.json())
+    ])
+      .then(([data1, data2,data3]) => {
+        const mergedResults = [...data1.results, ...data2.results,...data3.results];
+        setDetails(mergedResults);
+        setFilter(mergedResults);
       })
       .catch(error => console.error(error));
   }, []);
@@ -34,7 +39,7 @@ navigation("/home",{state:{data:item}});
 return (
     <>
     <header>
-    <nav className="navbar bg-body-tertiary">
+    <nav className="navbar bg-body-light">
   <div className="container-fluid">
   <div className="d-flex justify-content-center w-100" role="search">
   <div className="d-flex" style={{ width: "50%" }}>
@@ -65,7 +70,7 @@ return (
               />
               <div className="card-body">
                 <h5 className="card-title text-primary">{item.original_title}</h5>
-                <h5 className='card-title text-secondary'>{item.overview}</h5>
+                <h5 className='card-title text-success'>{item.release_date}</h5>
               </div>
             </div>
           </div>
