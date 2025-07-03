@@ -70,7 +70,7 @@ return (
                 <h5 className="card-title text-primary">{item.original_title}</h5>
                 <h5 className='card-title text-success'>{item.release_date}</h5>
               </div>
-            </div>
+            </div><div></div>
           </div>
         ))}
       </div>
