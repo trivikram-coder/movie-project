@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useNavigate} from 'react-router-dom';
+
 
 const Movie = () => {
-  const navigation=useNavigate();
+  
   const [details, setDetails] = useState([]);
   const[search,setSearch]=useState("")
   const [filter,setFilter]=useState([])
@@ -33,9 +33,7 @@ const searchMovie = (searchTerm) => {
   );
   setFilter(filteredData);
 };
-function page(item){
-navigation("/home",{state:{data:item}});
-}
+
 return (
     <>
     <header>
