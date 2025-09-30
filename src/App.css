@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(29, 28, 28);
+    background-color: rgb(214, 209, 209);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
 }
@@ -14,4 +14,6 @@ body{
     width: 500px;
     border: 1px solid black;
 }
-
+.navbar{
+    padding: 14px;
+}
